@@ -1,0 +1,30 @@
+{% extends 'base_template.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+    <div class="project-create_wrapper">
+
+        <h3>> CREATE_PROJECT</h3>
+
+        <div class="project-create profile-info">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input_wrapper"><span>> project_name <span class="info-highlight_p">-></span></span> {{form.title}}</div>
+                <div class="input_wrapper"><span>> project_description <span class="info-highlight_p">-></span></span> {{form.description}}</div>
+                <div class="input_wrapper"><span>> source_code_url <span class="info-highlight_p">-></span></span> {{form.source}}</div>
+                <div class="input_wrapper"><span>> images <span class="info-highlight_p">-></span> (ctrl+click)</span> <input type="file" id="imgs"  class="imgs" name="imgs" accept="image/*" lang="en-GB" multiple></div>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors  %}
+                        <div class="form-error"> <span class="form-error_highlight">[!]</span> {{error}}</div>
+                    {% endfor %}
+                {% endfor %}
+                
+                <button class="form-btn" type="submit">create_project()</button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock content %}

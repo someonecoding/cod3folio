@@ -1,0 +1,53 @@
+{% extends 'base_template.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Signup
+{% endblock %}
+
+{% block content %}
+
+<div class="project-create_wrapper">
+
+    <h3>> SIGN_UP</h3>
+
+    <div class="login-block project-create">
+        <form action="" method="POST">
+            <div class="login-wrapper">
+            {% csrf_token %}
+            
+            {{ form.email }}
+            
+
+            {{ form.username }}
+            
+
+            {{ form.password1 }}
+            
+
+            {{ form.password2 }}
+            
+
+            
+    
+                
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors  %}
+                        <div class="form-error"> <span class="form-error_highlight">[!]</span> {{error}}</div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="auth-links">
+                    <a href="{% url 'accounts:login' %}">login.</a>
+                    <a href="{% url 'home' %}">home.</a>
+                </div>
+                
+                <button class="auth-btn form-btn" type="submit">sign_up()</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock %}

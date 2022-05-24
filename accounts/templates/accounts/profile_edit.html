@@ -1,0 +1,70 @@
+{% extends 'base_template.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock scripts %}
+
+{% block content %}
+
+<div class="project-create_wrapper">
+
+    <h3>> EDIT_PROFILE</h3>
+
+    <div class="project-create profile-info">
+        <form id="profile_edit_form" action="" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <div class="input_wrapper"><span>> name <span class="info-highlight_p">-></span></span> {{profile_form.name}}</div>
+            <div class="input_wrapper"><span>> surname <span class="info-highlight_p">-></span></span> {{profile_form.surname}}</div>
+            <div class="input_wrapper"><span>> profile_img <span class="info-highlight_p">-></span></span> {{profile_form.image}}</div>
+            <div class="input_wrapper"><span>> position <span class="info-highlight_p">-></span></span> {{profile_form.position}}</div>
+            <div class="input_wrapper"><span>> bio <span class="info-highlight_p">-></span></span> {{profile_form.bio}}</div>
+            <div class="input_wrapper"><span>> github <span class="info-highlight_p">-></span></span> {{profile_form.github}}</div>
+            <div class="input_wrapper"><span>> linkedin <span class="info-highlight_p">-></span></span> {{profile_form.linkedin}}</div>
+
+            {{profile_form.errors}}
+
+            <div class="form-skills_wrapper">
+
+                {{skills_form.management_form}}
+                
+                {% for skill in skills_form %}
+                    <div class="form-btn form-skill">
+                        {% for hidden in skill.hidden_fields %}
+                            {{hidden}}
+                        {% endfor %}
+                        {{skill.instance.skill.title}}
+                        <div class="skill-edit_wrapper">
+                            {{skill.level}}
+                            <a class="remove-skill" href="{{skill.instance.get_delete_url}}"></a>
+                        </div>
+                        
+                    </div>
+                {% endfor %}
+                <div class="form-btn form-skill_hidden"></div>
+                <div class="form-btn form-skill_hidden"></div>
+                <div class="form-btn form-skill_hidden"></div>
+                <div class="form-btn form-skill_hidden"></div>
+            </div>
+
+        </form>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <div class="add-skill_wrapper">
+                {{skill_create_form.skill}}
+                {{skill_create_form.level}}
+                <input class="add-skill_btn" type="submit" value="add_skill()" name="add_skill">
+            </div>
+        </form>
+
+        <button form="profile_edit_form" class="form-btn" type="submit">edit_profile()</button>
+
+    </div>
+
+</div>
+
+{% endblock content %}

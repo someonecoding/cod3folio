@@ -1,0 +1,34 @@
+{% extends 'base_template.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+<div class="profile-wrapper">
+
+    <nav class="profile-nav">
+        <div class="profile-links">
+            <a href="{% url 'accounts:profile' pk=pk %}" class="profile-link">:Info</a>
+            <a href="" class="profile-link">:Projects</a>
+        </div>
+
+        {% if pk == request.user.pk %}<a href="{% url 'accounts:project-create' pk=request.user.pk %}" class="form-btn">create_new_project()</a>{% endif %}
+    </nav>
+
+    <div class="projects-wrapper">
+        {% for project in projects %}
+            <div class="profile-info project-item">
+                <div class="blur">
+                    <a href="{{project.get_absolute_url}}" class="btn-more form-btn">show_more()</a>
+                </div>
+                <p><span class="info-highlight">name</span> <span class="info-highlight_p">-></span> "{{project.title}}"</p>
+                <p><span class="info-highlight">description</span> <span class="info-highlight_p">-></span> "{{project.description}}"</p>
+            </div>
+        {% endfor %}
+        <div class="profile-info project-item item-hidden"></div>
+        <div class="profile-info project-item item-hidden"></div>
+    </div>
+
+</div>
+
+{% endblock content %}

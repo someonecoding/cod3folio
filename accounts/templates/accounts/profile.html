@@ -1,0 +1,56 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% load my_filters %}
+{% block title %}
+    {{object.username}} > cod3folio.
+{% endblock title %}
+
+
+{% block content %}
+    <div class="profile-wrapper">
+
+        <nav class="profile-detail_nav">
+            <a href="{% url 'accounts:profile' pk=object.pk %}" class="profile-link">:Info</a>
+            <a href="{% url 'accounts:projects' pk=object.pk %}" class="profile-link">:Projects</a>
+            
+            {% if request.user.pk == object.pk %}
+                <a href="{% url 'accounts:profile-update' pk=request.user.pk %}" class="form-btn profile-edit_btn">edit_profile()</a>
+            {% endif %}
+        </nav>
+
+        <div class="profile-info short">
+            <div class="image_wrapper">
+                <img src="{{object.profile.image.url}}" class="rounded-circle profile-image">
+                <div class="short-info">
+                    <p><span class="info-highlight">> username</span> <span class="info-highlight_p">-></span> {{object.username}}</p>
+                    <p><span class="info-highlight">> position</span> <span class="info-highlight_p">-></span> {{object.profile.position}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <h3>> PERSONAL_DATA:</h3>
+            <p><span class="info-highlight">name</span> <span class="info-highlight_p">-></span> "{{object.profile.get_full_name}}"</p>
+            <p><span class="info-highlight">email</span> <span class="info-highlight_p">-></span> "{{object.email}}"</p>
+            {% if object.profile.github %}
+                <p><span class="info-highlight">github</span> <span class="info-highlight_p">-></span> "<a href="{{object.profile.github}}">{{object.profile.github}}</a>"</p>
+            {% endif %}
+            {% if object.profile.linkedin %}
+                <p><span class="info-highlight">linkedin</span> <span class="info-highlight_p">-></span> "<a href="{{object.profile.linkedin}}">{{object.profile.linkedin}}</a>"</p>
+            {% endif %}
+        </div>
+
+        <div class="profile-info">
+            <h3>> ABOUT_ME:</h3>
+            <p><span class="info-highlight">"{{object.profile.bio}}"</span></p>
+        </div>
+
+        <div class="profile-info">
+            <h3>> MY_SKILLS:</h3>
+            {% for skill in skills %}
+                <p class="profile_skill"><span class="info-highlight">{{skill.skill.title}}</span> <span class="info-highlight_p">-></span>  {% for i in skill.level|times %}*{% endfor %} </p>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock content %}

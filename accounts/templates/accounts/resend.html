@@ -1,0 +1,35 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+Resend Email
+{% endblock %}
+
+{% block content %}
+
+<div class="project-create_wrapper">
+
+    <div class="login-block project-create">
+        <form action="" method="POST">
+            <div class="login-wrapper">
+                {% csrf_token %}
+                <h2 class="auth-h">Resend email.</h2>
+                {{form.email}}
+                
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors  %}
+                        <div class="form-error"> <span class="form-error_highlight">[!]</span> {{error}}</div>
+                    {% endfor %}
+                {% endfor %}
+
+
+                <div class="auth-links">
+                    <a href="{% url 'accounts:signup' %}">sign up.</a>
+                    <a href="{% url 'home' %}">home.</a>
+                    <a href="{% url 'accounts:login' %}">sign up.</a>
+                </div>
+                
+                <button class="auth-btn form-btn" type="submit">resend_email()</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

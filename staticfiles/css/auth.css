@@ -1,0 +1,39 @@
+.login-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-wrapper *{
+    margin-bottom: 25px;
+}
+
+.login-block{
+    width: 30% !important;
+}
+
+.login-wrapper label{
+    color: orange;
+    font-size: 20px;
+}
+
+.login-wrapper input{
+    width: 70% !important;
+    padding: 10px 20px !important;
+}
+
+.auth-links{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.auth-links a{
+    text-decoration: none;
+    color: #3bedb7;
+}
+
+.auth-btn{
+    padding: 5px 10px !important;
+}

@@ -1,0 +1,63 @@
+{% extends 'base_template.html' %}
+{% load my_filters %}
+{% load static %}
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock scripts %}
+{% block content %}
+
+    <div class="profile-wrapper project-wrapper">
+
+        <div class="project-header">
+            <h3>> PROJECT_DATA</h3>
+            {% if project.user.pk == request.user.pk %}
+                <a href="{% url 'accounts:project-edit' pk=request.user.pk slug=project.slug %}" class="form-btn">edit_project()</a>
+            {% else %}
+                <div class="hidden"></div>
+            {% endif %}
+        </div>
+
+        <div class="profile-info project-info">
+
+            <p><span class="info-highlight">> project_name</span> <span class="info-highlight_p">-></span> "{{project.title}}"</p>
+            <p><span class="info-highlight">> project_author</span> <span class="info-highlight_p">-></span> "{{project.user.username}}"</p>
+            <p><span class="info-highlight">> project_description</span> <span class="info-highlight_p">-></span> "{{project.description}}"</p>
+            {% if project.source %}
+                <p><span class="info-highlight">> source_code_url</span> <span class="info-highlight_p">-></span> "<a href="{{project.source}}">{{project.source}}</a>"</p>
+            {% endif %}
+
+        </div>
+
+        {% if project.images.all %}
+
+            <h3>> PROJECT_IMAGES</h3>
+
+            <div class="carousel-wrapper">
+                <div id="carouselExampleControls" class="carousel" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for img in project.images.all %}
+                        {% with forloop.counter0 as i %}
+                        <div class="carousel-item {% if i is 0 %}active{% endif %}">
+                            <img class="d-block w-100" src="{{ img.image.url }}"/>
+                        </div>
+                        {% endwith %}
+                        {% endfor %}
+            
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    
+{% endblock content %}

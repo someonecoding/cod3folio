@@ -1,0 +1,246 @@
+.project-create_wrapper{
+    min-height: 92vh;
+    display: flex;
+    padding: 25px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Code Pro', monospace;
+    color: #3bedb7;
+}
+
+.projects-wrapper{
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.project-create{
+    margin-top: 25px;
+    background-color: #1f1f1f;
+    padding: 25px;
+    width: 50%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input_wrapper{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.project-create span{
+    margin-top: 5px;
+}
+
+.project-create input, textarea{
+    display: block;
+    width: 50%;
+    color: rgb(255, 153, 0);
+    background-color: #181818;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.project-create input:focus, textarea:focus{
+    outline: none;
+}
+
+.imgs::file-selector-button{
+    background-color: transparent;
+    border: none;
+    color: #3bedb7;
+    margin-right: 55px;
+}
+
+.imgs::file-selector-button:hover{
+    cursor: pointer;
+}
+
+.form-btn{
+    background-color: rgb(255, 153, 0);
+    color: #181818;
+    border: 2px solid black;
+    width: fit-content;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.form-btn:hover{
+    background-color: rgb(255, 132, 0);
+    color: #181818;
+    transition: 0.25s;
+}
+
+.form-error{
+    background-color: red;
+    color: #fff;
+    width: fit-content;
+    padding: 0px 5px;
+    margin: 10px 0px;
+}
+
+.form-error_highlight{
+    font-weight: bold;
+}
+
+.blur{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 19%, rgba(31, 31, 31, 0.977) 75%);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.project-item{
+    width: 400px;
+    height: 225px;
+    padding: 10px 0px 0px 10px;
+    overflow: hidden;
+    position: relative;
+    font-size: 18px;
+}
+
+.project-item a{
+    color: #181818;
+    border: 2px solid black;
+}
+
+.project-item p{
+    margin-left: 0;
+}
+
+.item-hidden{
+    visibility: hidden;
+    height: 0;
+}
+
+.btn-more{
+    display: block;
+    position: absolute;
+    z-index: 999;
+    text-decoration: none;
+    margin-bottom: 30px;
+    margin-right: 30px;
+}
+
+.carousel-wrapper{
+    width: 70%;
+}
+
+.carousel{
+    height: 400px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.carousel img{
+    height: 400px;
+    width: 70%;
+    border-radius: 15px;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    background-color: #1f1f1f;
+    height: 50px;
+    width: 50px;
+    margin: auto 0;
+}
+
+.project-info{
+    width: 70%;
+    margin: 0;
+}
+
+.project-info p{
+    margin: 10px 0px;
+    font-size: 20px;
+}
+
+.project-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+}
+
+.project-wrapper h3{
+    margin: 35px 0;
+}
+
+.form-imgs_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.form-img.img-hidden{
+    visibility: hidden;
+    height: 0;
+    width: 150px;
+}
+
+.form-img_item{
+    height: 75px;
+    width: 150px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-img_item img{
+    height: 75px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.form-img_item a{
+    height: 20px;
+    width: 20px;
+    background-image: url("../img/remove.881a96075656.png");
+    background-size: contain;
+    display: block;
+    position: absolute;
+    transition: 0.25s;
+}
+
+.form-img_item a:hover{
+    filter: brightness(90%);
+    transition: 0.25s;
+}
+
+.project-header{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-header a{
+    height: fit-content;
+}
+
+.project-edit_header{
+    width: 50%;
+}
+
+.delete-btn{
+    background-color: rgb(240, 0, 0);
+}
+
+.delete-btn:hover{
+    background-color: rgb(205, 0, 0);
+}
